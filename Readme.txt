@@ -1,70 +1,32 @@
-TM_WORLD_BORDERS-0.1.ZIP 
+Paper based tools annex dashboard
+About
+In ACAI we have recommendation made for fertilizer application and schedule planting for cassava growers in Nigeria and Tanzania. Currently we have fertilizer recommendations based on farmers current yield, planting month by state and LGA for Nigeria and by region and district for Tanzania. For every farmer’s current yield and planting month we have fertilizer rates and expected yield increase which is presented both in tables and maps. The scheduled planting (SP) gives recommendation on how much root yield can be obtained given a planting month and farmers current yield defined by user and just like the fertilizer recommendation, the SP is also working at LGA/district level.
+The paper-based tools annex dashboard is an interative shiny app with maps, tables and some graphical output to show difference based on either planting month or farmers current yield, spatial variation, etc.
+The interactive dashboard provides a medium where users:
+-	Can indicate their current yield, location and planting month and be provided by recommendation both in table and map format
+-	Can indicate their location and be provided with recommendations for several planting months together with expected yield increase
 
-Provided by Bjorn Sandvik, thematicmapping.org
-
-Use this dataset with care, as several of the borders are disputed.
-
-The original shapefile (world_borders.zip, 3.2 MB) was downloaded from the Mapping Hacks website:
-http://www.mappinghacks.com/data/
-
-The dataset was derived by Schuyler Erle from public domain sources.
-Sean Gilles did some clean up and made some enhancements.
-
-
-COLUMN		TYPE			DESCRIPTION
-
-Shape		Polygon			Country/area border as polygon(s)
-FIPS		String(2)		FIPS 10-4 Country Code
-ISO2		String(2)		ISO 3166-1 Alpha-2 Country Code
-ISO3		String(3)		ISO 3166-1 Alpha-3 Country Code
-UN		Short Integer(3)	ISO 3166-1 Numeric-3 Country Code 
-NAME		String(50)		Name of country/area
-AREA		Long Integer(7)		Land area, FAO Statistics (2002) 
-POP2005		Double(10,0)	 	Population, World Polulation Prospects (2005)
-REGION		Short Integer(3) 	Macro geographical (continental region), UN Statistics
-SUBREGION	Short Integer(3)	Geogrpahical sub-region, UN Statistics
-LON		FLOAT (7,3)		Longitude
-LAT		FLOAT (6,3)		Latitude
+The steps to follow 
+You need shape files for the country you want to work with. These should be saved under this link /home/akilimo/projects/AKILIMO_Dashboards/PaperBasedAnnex/Input/readGISlayers You can follow the naming to suit the country.
+You also need some precalculated FCY values for the specific country. These can be provided by Meklit, and need to be pasted here: /home/akilimo/projects/AKILIMO_Dashboards/PaperBasedAnnex/Input/readFCY 
+Please create a folder with the country abbreviations.
+You also need printable guides for the country you work in, to be stored here: /home/akilimo/projects/AKILIMO_Dashboards/PaperBasedAnnex/Input/PrintableGuides
+In the script, the country info will need to reworked, afterwhich the dashboard should go live just after running the server.R file ((press Run App).
+Tabular data with location, planting month, current yield, target yield, cost and expected net revenue, and rate of fertilizers.
 
 
-CHANGELOG VERSION 0.3 - 30 July 2008
+The dashboard has 3 panels:
+The use case mapper 
+The use case mapper offers an interactive map with a floating filter that allows selection of maps by country, state and use case, unit of land, current yield and planting month. The tool also allows selection of variables to be viewed by:
+1.	NPK 15:15:15 rate
+2.	Expected yield response
+3.	Urea rate
+4.	DAP (TZ)
+The user can also opt to specify their prices for cassava and fertilizers in order to get more accurate results. After pressing the icon ‘GET MAPS & TABLES’, the user gets an interactive map that allows the user to zoom in and out in order to have a better view of the geographical areas presented and gives a legend to explain the color coding. 
+On this panel also, a user can download a printable guide which will be specific to filter values specified by the user.
+View maps side by side
+This offers side by side viewing of the maps by all the variables and allows the same level of zoom and user color coding. The maps can also be downloaded as required by the user.
+View table panel
+This panel offfers a table that gives a detailed summary of the information gathered from the filter and shared on the map. The table can be downloaded in two formats: excel and PDF. It also has a ‘send to printer’ option. The columns can also be toggled using the ‘column visibility’ tab at the top of the table to offer better visibility of the select columns.
 
-- Corrected spelling mistake (United Arab Emirates)
-- Corrected population number for Japan
-- Adjusted long/lat values for India, Italy and United Kingdom
-
-
-CHANGELOG VERSION 0.2 - 1 April 2008
-
-- Made new ZIP archieves. No change in dataset.
-
-
-CHANGELOG VERSION 0.1 - 13 March 2008
-
-- Polygons representing each country were merged into one feature
-- �land Islands was extracted from Finland
-- Hong Kong was extracted from China
-- Holy See (Vatican City) was added
-- Gaza Strip and West Bank was merged into "Occupied Palestinean Territory"
-- Saint-Barthelemy was extracted from Netherlands Antilles
-- Saint-Martin (Frensh part) was extracted from Guadeloupe
-- Svalbard and Jan Mayen was merged into "Svalbard and Jan Mayen Islands"
-- Timor-Leste was extracted from Indonesia
-- Juan De Nova Island was merged with "French Southern & Antarctic Land"
-- Baker Island, Howland Island, Jarvis Island, Johnston Atoll, Midway Islands
-  and Wake Island was merged into "United States Minor Outlying Islands"
-- Glorioso Islands, Parcel Islands, Spartly Islands was removed 
-  (almost uninhabited and missing ISO-3611-1 code)
-
-- Added ISO-3166-1 codes (alpha-2, alpha-3, numeric-3). Source:
-  https://www.cia.gov/library/publications/the-world-factbook/appendix/appendix-d.html
-  http://unstats.un.org/unsd/methods/m49/m49alpha.htm
-  http://www.fysh.org/~katie/development/geography.txt
-- AREA column has been replaced with data from UNdata:
-  Land area, 1000 hectares, 2002, FAO Statistics
-- POPULATION column (POP2005) has been replaced with data from UNdata:
-  Population, 2005, Medium variant, World Population Prospects: The 2006 Revision
-- Added region and sub-region codes from UN Statistics Division. Source:
-  http://unstats.un.org/unsd/methods/m49/m49regin.htm
-- Added LAT, LONG values for each country
 
